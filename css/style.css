@@ -33,11 +33,11 @@ main {
 }
 
 .products {
-    display: flex;
+    display: contents;
     align-self: auto;
     background: burlywood;
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 340px;
     text-align: center;
 }
 
@@ -46,12 +46,16 @@ main {
     display: flex;
     flex-direction: column;
     background: burlywood;
-    height: 250px;
-    width: 250px;
+    width: 340px;
     align-self: auto;
     text-align: center;
 }
 
+.buy-btn {
+    margin: 9px;
+    width: 64px;
+    text-align: center;
+}
 .product-img {
     height: 100px;
     width: 100px;
