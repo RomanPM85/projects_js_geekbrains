@@ -7,15 +7,15 @@ const products = [
     {id: 6, title: 'Headphones', price: 500, context: 'img/headphones.jpg'},
     {id: 7, title: 'Microphone', price: 500, context: 'img/microphone.jpg'},
     {id: 8, title: 'Telephone', price: 500, context: 'img/telephone.jpg'},
-    {id: 9, title: 'No product available', price: 0, context: 'img/not_foto.png'},
-    {id: 10, title: 'No product available', price: 0, context: 'img/not_foto.png'},
-    {id: 11, title: 'No product available', price: 0, context: 'img/not_foto.png'},
-    {id: 12, title: 'No product available', price: 0, context: 'img/not_foto.png'},
+    {id: 9},
+    {id: 10},
+    {id: 11},
+    {id: 12},
 ];
 //Функция для формирования верстки каждого товара
-const renderProduct = (title, price, context) => {
+const renderProduct = (title='No product available', price=0, context='img/not_foto.png') => {
     return `<div class="product-item">
-                <img class="image" src="${context}" alt="foto">
+                <img class="image" src="${context}" alt="photo products">
                 <h3>${title}</h3>
                 <p>Цена: ${price} руб.</p>
                 <button class="buy-btn">Купить</button>
