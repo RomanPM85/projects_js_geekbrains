@@ -22,7 +22,7 @@ const renderProduct = (title='No product available', price=0, context='img/not_f
             </div>`
 };
 const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item.title, item.price, item.context));
+    const productsList = list.map(item => renderProduct(item.title, item.price, item.context)).join('');
     console.log(productsList);
     document.querySelector('.products').innerHTML = productsList;
 };
