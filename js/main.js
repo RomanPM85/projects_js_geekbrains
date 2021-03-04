@@ -53,15 +53,45 @@ class ProductItem {
 }
 
 
-class BasketList extends BasketList {
-    constructor(container = '.btn-cart') {
-        super.container = container;
-        super._fetchProducts();
-        this.sum = sum;
+class GoodsItem {
+    constructor(title, price) {
+        this.title = title;
+        this.price = price;
+        // this.itembasket = itembasket
     }
+
+    render() {
+        return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
+    }
+
+}
+
+class GoodsList {
+    constructor() {
+        this.goods = [];
+    }
+
+    fetchGoods() {
+        this.goods = [
+            {id: 1, title: 'Notebook', price: 40000, img: 'img/netbuk.jpg'},
+            {id: 2, title: 'Mouse', price: 200, img: 'img/mouse.jpg'},
+            {id: 3, title: 'Keyboard', price: 800, img: 'img/keyboard.jpg'},
+        ];
+    }
+    render() {
+        let listHtml = '';
+        this.goods.forEach(good => {
+            const goodItem = new GoodsItem(good.title, good.price);
+            listHtml += goodItem.render();
+        });
+        document.querySelector('.goods-list').innerHTML = listHtml;
+    }
+
 }
 
 let list = new ProductsList();
-let list2 = new BasketList();
 list.render();
-list2.render();
+
+const list = new GoodsList();
+list.fetchGoods();
+list.render();
