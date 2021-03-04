@@ -73,11 +73,12 @@ class GoodsList {
 
     fetchGoods() {
         this.goods = [
-            {id: 1, title: 'Notebook', price: 40000, img: 'img/netbuk.jpg'},
-            {id: 2, title: 'Mouse', price: 200, img: 'img/mouse.jpg'},
-            {id: 3, title: 'Keyboard', price: 800, img: 'img/keyboard.jpg'},
+            {id: 1, title: 'Notebook', price: 40000},
+            {id: 2, title: 'Mouse', price: 200},
+            {id: 3, title: 'Keyboard', price: 800},
         ];
     }
+
     render() {
         let listHtml = '';
         this.goods.forEach(good => {
