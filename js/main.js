@@ -61,40 +61,18 @@ let list = new ProductsList();
 list.render();
 list.getSum();
 
+class Basket {
+    addGoods() {
 
-// class GoodsItem {
-//     constructor(title, price) {
-//         this.title = title;
-//         this.price = price;
-//     }
-//
-//     render() {
-//         return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
-//     }
-//
-// }
-//
-//
-// class GoodsList {
-//     constructor() {
-//         this.goods = [];
-//     }
-//
-//     fetchGoods() {
-//         this.goods = [
-//             {id: 1, title: 'Notebook', price: 40000},
-//             {id: 2, title: 'Mouse', price: 200},
-//             {id: 3, title: 'Keyboard', price: 800},
-//         ];
-//     }
-//
-//     render() {
-//         let listHtml = '';
-//         this.goods.forEach(good => {
-//             const goodItem = new GoodsItem(good.title, good.price);
-//             listHtml += goodItem.render();
-//         });
-//         document.querySelector('.goods-list').innerHTML = listHtml;
-//     }
-//
-// }
+    }
+    removeGoods() {
+
+    }
+    changeGoods() {
+
+    }
+}
+
+class ElemBasket {
+
+}

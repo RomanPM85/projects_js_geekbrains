@@ -42,7 +42,7 @@ main {
     text-align: center;
 }
 
-.product-item {
+.product-item.goods-item {
     flex: none;
     display: flex;
     flex-direction: column;
