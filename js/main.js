@@ -2,6 +2,7 @@ class ProductsList {
     constructor(container = '.products') {
         this.container = container;
         this.goods = [];
+        this.allProducts = [];
         this._fetchProducts();
     }
 
@@ -56,67 +57,44 @@ class ProductItem {
     }
 }
 
-
-class GoodsItem {
-    constructor(title, price) {
-        this.title = title;
-        this.price = price;
-    }
-
-    render() {
-        return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
-    }
-
-}
-
-
-class GoodsList {
-    constructor() {
-        this.goods = [];
-    }
-
-    fetchGoods() {
-        this.goods = [
-            {id: 1, title: 'Notebook', price: 40000},
-            {id: 2, title: 'Mouse', price: 200},
-            {id: 3, title: 'Keyboard', price: 800},
-        ];
-    }
-
-    render() {
-        let listHtml = '';
-        this.goods.forEach(good => {
-            const goodItem = new GoodsItem(good.title, good.price);
-            listHtml += goodItem.render();
-        });
-        document.querySelector('.goods-list').innerHTML = listHtml;
-    }
-
-}
-
-
 let list = new ProductsList();
 list.render();
+list.getSum();
 
-let list = new GoodsList();
-list.fetchGoods();
-list.render();
-// 01
-//
-// class Basket {
-//     addGoods() {
-//
+
+// class GoodsItem {
+//     constructor(title, price) {
+//         this.title = title;
+//         this.price = price;
 //     }
 //
-//     removeGoods() {
-//
+//     render() {
+//         return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
 //     }
 //
-//     changeGoods() {
-//
-//     }
 // }
 //
-// class ElemBasket {
+//
+// class GoodsList {
+//     constructor() {
+//         this.goods = [];
+//     }
+//
+//     fetchGoods() {
+//         this.goods = [
+//             {id: 1, title: 'Notebook', price: 40000},
+//             {id: 2, title: 'Mouse', price: 200},
+//             {id: 3, title: 'Keyboard', price: 800},
+//         ];
+//     }
+//
+//     render() {
+//         let listHtml = '';
+//         this.goods.forEach(good => {
+//             const goodItem = new GoodsItem(good.title, good.price);
+//             listHtml += goodItem.render();
+//         });
+//         document.querySelector('.goods-list').innerHTML = listHtml;
+//     }
 //
 // }
