@@ -7,11 +7,27 @@
 </head>
 <body>
     <header>
-        <button class="btn-cart" type="button">Корзина</button>
+        <button class="btn-cart" type="button">Корзина</button></i><span
+                    class="count"></span></span>Корзина</button>
     </header>
     <main>
         <div class="products"></div>
+        <div class="cart">
+                <hr><br>
+                <h2>Корзина товаров</h2>
+                <div class="cart-content"></div>
+            </div>
     </main>
+        <p>
+        <!--afterstart-->
+        <span></span>
+        <!--beforeend-->
+    </p>
     <script src="js/main.js"></script>
+    <script>
+        document.querySelector('.btn-cart').addEventListener("click", () => {
+            document.querySelector('.cart').style.display = "block";
+        })
+    </script>
 </body>
 </html>

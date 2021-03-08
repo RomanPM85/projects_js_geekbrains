@@ -24,13 +24,16 @@ main {
     justify-content: space-around;
 }
 
-.btn-cart {
-    background: gray;
-    height: 40px;
-    width: 100px;
-    margin: 15px;
-    border:2px solid #ae0;
-    border-radius: 15px;
+.btn-cart:hover {
+    color: #fff;
+    background: #afafaf;
+    cursor: pointer;
+}
+
+.btn-cart:active {
+    color: #ffffff;
+    background: #afafaf;
+    outline: none;
 }
 
 .products {
