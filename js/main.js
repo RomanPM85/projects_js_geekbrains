@@ -28,22 +28,14 @@ class ProductsList {
             const productObj = new ProductItem(product);
             this.allProducts.push(productObj);
             block.insertAdjacentHTML('beforeend', productObj.render())
-//            block.innerHTML += productObj.render();
         }
     }
 
     getSum() {
-        // *let sum = 0;
-        // for(let product of this.goods){
-        //     sum += product.price;
-        // }*
-        // //reduce используется для последовательной обработки каждого элемента массива с сохранением промежуточного
-        //      результата.
         let res = this.allProducts.reduce((sum, item) => sum += item.price, 0);
         alert(res);
     }
 }
-
 
 
 class ProductItem {
@@ -69,7 +61,6 @@ class GoodsItem {
     constructor(title, price) {
         this.title = title;
         this.price = price;
-        // this.itembasket = itembasket
     }
 
     render() {
@@ -77,6 +68,7 @@ class GoodsItem {
     }
 
 }
+
 
 class GoodsList {
     constructor() {
@@ -102,9 +94,29 @@ class GoodsList {
 
 }
 
+
 let list = new ProductsList();
 list.render();
 
-const list = new GoodsList();
+let list = new GoodsList();
 list.fetchGoods();
 list.render();
+// 01
+//
+// class Basket {
+//     addGoods() {
+//
+//     }
+//
+//     removeGoods() {
+//
+//     }
+//
+//     changeGoods() {
+//
+//     }
+// }
+//
+// class ElemBasket {
+//
+// }
