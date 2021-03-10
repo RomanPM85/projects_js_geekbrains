@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <button class="btn-cart" type="button">Корзина</button>
+        <div class="logo">E-shop</div>
+        <div class="cart">
+<!--            Ставим на form заглушку "#"  для -->
+            <form action="#" class="search-form">
+                <input type="text" class="search-field">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <button class="btn-cart" type="button">Корзина</button>
+<!--            invisible для отображения корзинки-->
+            <div class="cart-block invisible"></div>
+        </div>
     </header>
     <main>
+<!--        класс products где находятся все информация о товарах-->
         <div class="products"></div>
     </main>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
