@@ -1,47 +1,52 @@
+// адресс на репозиторий, где хранятся json файлы с товарами
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
+// реализация из 6 классов, для просмотра читать снизу вверх, т.е. от вызовов классов
+
+// Базовый класс родитель
 class List {
+    // Конструктор: путь к json файлу через url, контейнер куда будут вставляться товары, связь между классами
     constructor(url, container, list = list2){
-        this.container = container;
-        this.list = list;
-        this.url = url;
-        this.goods = [];
-        this.allProducts = [];
-        this.filtered = [];
-        this._init();
+        this.container = container; //контейнер
+        this.list = list; // связь классв
+        this.url = url; // адресс
+        this.goods = []; //массив товаров, сами товары
+        this.allProducts = []; //массив объектов класса товара
+        this.filtered = []; // массив объектов фильтра
+        this._init(); // вызов метода инит, для переопределения в потомке от данного класса
     }
-    getJson(url){
-        return fetch(url ? url : `${API + this.url}`)
+    getJson(url){ //метод получение файла JSON и преобразования его в код JavaScript
+        return fetch(url ? url : `${API + this.url}`) // для запуска как локальных так и из репозитория
             .then(result => result.json())
             .catch(error => {
                 console.log(error);
             })
     }
-    handleData(data){
+    handleData(data){ //распаковываем список товаров и передаем методу render для отображения на странице
         this.goods = [...data];
         this.render();
     }
-    calcSum(){
+    calcSum(){ // метод суммирование товаров
         return this.allProducts.reduce((accum, item) => accum += item.price, 0);
     }
-    render(){
+    render(){ // вывод товаров на страницу
         const block = document.querySelector(this.container);
         for (let product of this.goods){
             const productObj = new this.list[this.constructor.name](product);
             console.log(productObj);
             this.allProducts.push(productObj);
-            block.insertAdjacentHTML('beforeend', productObj.render());
+            block.insertAdjacentHTML('beforeend', productObj.render()); //вывод отдельного товара
         }
     }
-    filter(value){
+    filter(value){ // метод фильтрации товаров по каталогу
         const regexp = new RegExp(value, 'i');
         this.filtered = this.allProducts.filter(product => regexp.test(product.product_name));
         this.allProducts.forEach(el => {
             const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
             if(!this.filtered.includes(el)){
-                block.classList.add('invisible');
+                block.classList.add('invisible'); //по умолчанию невидимый
             } else {
-                block.classList.remove('invisible');
+                block.classList.remove('invisible'); //по умолчанию невидимый
             }
         })
     }
@@ -49,7 +54,7 @@ class List {
         return false
     }
 }
-
+// класс базового товара:
 class Item{
     constructor(el, img = 'https://placehold.it/200x150'){
         this.product_name = el.product_name;
@@ -71,7 +76,7 @@ class Item{
             </div>`
     }
 }
-
+// список товаров каталога, потомок класса List
 class ProductsList extends List{
     constructor(cart, container = '.products', url = "/catalogData.json"){
         super(url, container);
@@ -79,7 +84,7 @@ class ProductsList extends List{
         this.getJson()
             .then(data => this.handleData(data));
     }
-    _init(){
+    _init(){ //регистрируем собитие нажатие клика,
         document.querySelector(this.container).addEventListener('click', e => {
             if(e.target.classList.contains('buy-btn')){
                 this.cart.addProduct(e.target);
@@ -92,9 +97,9 @@ class ProductsList extends List{
     }
 }
 
-
+//класс товара каталога
 class ProductItem extends Item{}
-
+// класс - списк товаров корзинки
 class Cart extends List{
     constructor(container = ".cart-block", url = "/getBasket.json"){
         super(url, container);
@@ -104,14 +109,14 @@ class Cart extends List{
             });
     }
     addProduct(element){
-        this.getJson(`${API}/addToBasket.json`)
+        this.getJson(`${API}/addToBasket.json`) //addToBasket.json, проверка связи с JSON объектом в репозитории.
             .then(data => {
                 if(data.result === 1){
-                    let productId = +element.dataset['id'];
-                    let find = this.allProducts.find(product => product.id_product === productId);
+                    let productId = +element.dataset['id']; // получаем id по событию
+                    let find = this.allProducts.find(product => product.id_product === productId); //ищем товары
                     if(find){
-                        find.quantity++;
-                        this._updateCart(find);
+                        find.quantity++;//если товар находим такой же, прибавляем количество
+                        this._updateCart(find); //обновляем корзину
                     } else {
                         let product = {
                             id_product: productId,
@@ -127,7 +132,7 @@ class Cart extends List{
                 }
             })
     }
-    removeProduct(element){
+    removeProduct(element){ //метод удаление элементов корзинки
         this.getJson(`${API}/deleteFromBasket.json`)
             .then(data => {
                 if(data.result === 1){
@@ -145,7 +150,7 @@ class Cart extends List{
                 }
             })
     }
-    _updateCart(product){
+    _updateCart(product){ //метод обновление, добавление элементов  корзинки
        let block = document.querySelector(`.cart-item[data-id="${product.id_product}"]`);
        block.querySelector('.product-quantity').textContent = `Quantity: ${product.quantity}`;
        block.querySelector('.product-price').textContent = `$${product.quantity*product.price}`;
@@ -162,7 +167,7 @@ class Cart extends List{
     }
 
 }
-
+// класс товара корзинки
 class CartItem extends Item{
     constructor(el, img = 'https://placehold.it/50x100'){
         super(el, img);
@@ -185,6 +190,7 @@ class CartItem extends Item{
         </div>`
     }
 }
+// Связь классов между собой {класс список_товаров: класс_товары}
 const list2 = {
     ProductsList: ProductItem,
     Cart: CartItem
