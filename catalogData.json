@@ -7,6 +7,36 @@
   {
     "id_product": 456,
     "product_name": "Мышка",
-    "price": 1000
+    "price": 200
+  },
+  {
+    "id_product": 458,
+    "product_name": "Клавиатура",
+    "price": 800
+  },
+  {
+    "id_product": 459,
+    "product_name": "Геймпад",
+    "price": 30000
+  },
+  {
+    "id_product": 460,
+    "product_name": "Телевизор",
+    "price": 70000
+  },
+  {
+    "id_product": 461,
+    "product_name": "Наушники",
+    "price": 1200
+  },
+  {
+    "id_product": 462,
+    "product_name": "Микрофон",
+    "price": 2500
+  },
+  {
+    "id_product": 463,
+    "product_name": "Телефон",
+    "price": 25000
   }
 ]

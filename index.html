@@ -26,7 +26,7 @@
                             <div class="product-desc">
                                 <p class="product-title">{{ product.product_name}}</p>
                                 <span class="product-quantity">{{ product.quantity}} шт. х</span>
-                                <span class="product-single-price">{{product.price}} $</span>
+                                <span class="product-single-price">{{product.price}} руб.</span>
                             </div>
                         </div>
                         <div class="right-block">
@@ -38,7 +38,7 @@
                     <div v-show="!isCartFull" class="goods-list">Ваша корзина пуста</div>
                     <div v-show="isCartFull" class="cart-sum">
                         Общее количество товаров: {{cartProductsCount}} шт.<br>Общая сумма: {{
-                        cartProductsSum}}$
+                        cartProductsSum}}руб.
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <img :src="imgCatalog" :alt="product.product_name">
                     <div class="desc">
                         <h3>{{ product.product_name }}</h3>
-                        <p>{{ product.price }} $</p>
+                        <p>{{ product.price }} руб.</p>
                         <button class="buy-btn" @click="addProduct(product)">Купить</button>
                     </div>
                 </div>
