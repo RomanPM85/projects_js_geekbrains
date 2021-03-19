@@ -69,8 +69,8 @@ Vue.component('cart-item', {
                         <img :src="img" alt="Some image">
                         <div class="product-desc">
                             <p class="product-title">{{cartItem.product_name}}</p>
-                            <p class="product-quantity">Quantity: {{cartItem.quantity}}</p>
-                            <p class="product-single-price">$ {{cartItem.price}} each</p>
+                            <p class="product-quantity">количество: {{cartItem.quantity}} шт.</p>
+                            <p class="product-single-price">$ {{cartItem.price}} руб.</p>
                         </div>
                     </div>
                     <div class="right-block">
