@@ -26,24 +26,17 @@ Vue.component('cart', {
                     }
                 })
         },
-        remove(product) {
-            if (product.quantity > 1) {
-                this.$parent.putJson(`/api/cart/${product.id_product}/${product.product_name}`, {quantity: -1})
-                    .then(data => {
-                        if (data.result) {
-                            product.quantity--;
-                        }
-                    })
-            } else {
-                this.$parent.delJson(`/api/cart/${product.id_product}/${product.product_name}`, product)
-                    .then(data => {
-                        if (data.result) {
-                            this.cartItems.splice(this.cartItems.indexOf(product), 1);
+        remove(item) {
+            this.$parent.getJson(`${API}/deleteFromBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
+                        if (item.quantity > 1) {
+                            item.quantity--;
                         } else {
-                            console.log('error');
+                            this.cartItems.splice(this.cartItems.indexOf(item), 1)
                         }
-                    })
-            }
+                    }
+                })
         },
     },
     mounted() {
@@ -73,7 +66,7 @@ Vue.component('cart-item', {
     template: `
                 <div class="cart-item">
                     <div class="product-bio">
-                        <img :src="img" alt="item.imgProduct">
+                        <img :src="img/icon" alt="item.imgProduct">
                         <div class="product-desc">
                             <p class="product-title">{{cartItem.product_name}}</p>
                             <p class="product-quantity">количество: {{cartItem.quantity}} шт.</p>
