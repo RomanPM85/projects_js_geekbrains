@@ -40,10 +40,10 @@ Vue.component('cart', {
         },
     },
     mounted() {
-        this.$parent.getJson(`/api/cart`)
+        this.$parent.getJson(`${API + this.cartUrl}`)
             .then(data => {
                 for (let el of data.contents) {
-                    this.cartItems.push(el)
+                    this.cartItems.push(el);
                 }
             });
     },
@@ -55,11 +55,12 @@ Vue.component('cart', {
                 <cart-item class="cart-item" v-for="item of cartItems" 
                 :key="item.id_product"
                 :cart-item="item" 
-                :img="item.imgProduct"
+                :img="imgCart"
                 @remove="remove"></cart-item>
             </div>
         </div>`
 });
+
 
 Vue.component('cart-item', {
     props: ['cartItem', 'img'],
