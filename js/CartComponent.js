@@ -2,7 +2,7 @@ Vue.component('cart', {
     data() {
         return {
             // imgCart: 'https://placehold.it/50x100',
-            cartUrl: '/getBasket.json',
+            // cartUrl: '/getBasket.json',
             cartItems: [],
             showCart: false,
         }
@@ -26,33 +26,33 @@ Vue.component('cart', {
                     }
                 })
         },
-        remove( product ) {
-            if ( product.quantity > 1 ) {
-                this.$parent.putJson( `/api/cart/${ product.id_product }/${ product.product_name }`, { quantity: -1 } )
-                    .then( data => {
-                        if ( data.result ) {
+        remove(product) {
+            if (product.quantity > 1) {
+                this.$parent.putJson(`/api/cart/${product.id_product}/${product.product_name}`, {quantity: -1})
+                    .then(data => {
+                        if (data.result) {
                             product.quantity--;
                         }
-                    } )
+                    })
             } else {
-                this.$parent.delJson( `/api/cart/${ product.id_product }/${ product.product_name }`, product )
-                    .then( data => {
-                        if ( data.result ) {
-                            this.cartItems.splice( this.cartItems.indexOf( product ), 1 );
+                this.$parent.delJson(`/api/cart/${product.id_product}/${product.product_name}`, product)
+                    .then(data => {
+                        if (data.result) {
+                            this.cartItems.splice(this.cartItems.indexOf(product), 1);
                         } else {
-                            console.log( 'error' );
+                            console.log('error');
                         }
-                    } )
+                    })
             }
         },
     },
     mounted() {
-        this.$parent.getJson( `/api/cart` )
-            .then( data => {
-                for ( let el of data.contents ) {
-                    this.cartItems.push( el )
+        this.$parent.getJson(`/api/cart`)
+            .then(data => {
+                for (let el of data.contents) {
+                    this.cartItems.push(el)
                 }
-            } );
+            });
     },
     template: `
         <div>
