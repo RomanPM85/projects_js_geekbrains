@@ -14,13 +14,6 @@ Vue.component('products', {
         }
     },
     mounted(){
-        // this.$parent.getJson(`/api/products`)
-        //     .then(data => {
-        //         for(let el of data){
-        //             this.products.push(el);
-        //             this.filtered.push(el);
-        //         }
-        //     });
         this.$parent.getJson(`catalogData.json`)
             .then(data => {
                 for (let el of data) {
