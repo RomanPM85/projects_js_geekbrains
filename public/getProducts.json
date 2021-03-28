@@ -1,0 +1,50 @@
+[
+  {
+    "id_product": 123,
+    "product_name": "Ноутбук",
+    "price": 45600,
+    "imgProduct": "img/icons/m_netbuk.jpg"
+  },
+  {
+    "id_product": 456,
+    "product_name": "Мышка",
+    "price": 200,
+    "imgProduct": "img/icons/m_mouse.jpg"
+  },
+  {
+    "id_product": 458,
+    "product_name": "Клавиатура",
+    "price": 800,
+    "imgProduct": "img/icons/m_keyboard.jpg"
+  },
+  {
+    "id_product": 459,
+    "product_name": "Геймпад",
+    "price": 30000,
+    "imgProduct": "img/icons/m_gamepad.jpg"
+  },
+  {
+    "id_product": 460,
+    "product_name": "Телевизор",
+    "price": 70000,
+    "imgProduct": "img/icons/m_TV.jpg"
+  },
+  {
+    "id_product": 461,
+    "product_name": "Наушники",
+    "price": 1200,
+    "imgProduct": "img/icons/m_headphones.jpg"
+  },
+  {
+    "id_product": 462,
+    "product_name": "Микрофон",
+    "price": 2500,
+    "imgProduct": "img/icons/m_microphone.jpg"
+  },
+  {
+    "id_product": 463,
+    "product_name": "Телефон",
+    "price": 25000,
+    "imgProduct": "img/icons/m_telephone.jpg"
+  }
+]
